@@ -26,7 +26,7 @@ class _LoginButtonState extends State<LoginButton> {
     return Container(
       margin: const EdgeInsets.all(10),
       child: GestureDetector(
-        onTap: () => widget.onClick,
+        onTap: () => widget.onClick(),
         onTapDown: (d) {
           setState(() {
             isPressed = true;
