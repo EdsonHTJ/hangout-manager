@@ -1,10 +1,12 @@
 import 'dart:ffi';
 import 'package:hive/hive.dart';
 
+part 'person.g.dart';
+
 @HiveType(typeId: 1)
 class Person {
   @HiveField(0)
-  final Uint64 id;
+  final int id;
   @HiveField(1)
   final String name;
   @HiveField(2)

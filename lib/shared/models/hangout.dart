@@ -2,6 +2,8 @@ import 'package:billmanager/shared/models/item.dart';
 import 'package:billmanager/shared/models/person.dart';
 import 'package:hive/hive.dart';
 
+part 'hangout.g.dart';
+
 @HiveType(typeId: 3)
 class Hangout {
   @HiveField(0)

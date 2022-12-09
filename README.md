@@ -1,4 +1,4 @@
-# billmanager
+# hangoutmanager
 
 A new Flutter project.
 
