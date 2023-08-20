@@ -6,7 +6,7 @@ import 'package:billmanager/shared/models/person.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
 
-const _hangoutBox = "Hangouts";
+const _hangoutBox = "hangouts";
 
 class DataBase {
   static init() async {

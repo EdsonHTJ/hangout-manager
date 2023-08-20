@@ -52,6 +52,9 @@ dev_dependencies:
   hive: 2.2.3
   hive_generator: ^2.0.0
   build_runner: ^2.4.6 
+  flutter_svg: ^2.0.5
+
+
 
 
 
@@ -96,3 +99,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/app_logo.svg
