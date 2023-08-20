@@ -5,15 +5,14 @@ var appTheme = ThemeData(
   fontFamily: GoogleFonts.nunito().fontFamily,
   brightness: Brightness.dark,
   textTheme: const TextTheme(
-    bodyText1: TextStyle(fontSize: 18),
-    bodyText2: TextStyle(fontSize: 16),
-    button: TextStyle(
+    bodyLarge: TextStyle(fontSize: 18),
+    labelLarge: TextStyle(
       fontSize: 20,
     ),
-    headline1: TextStyle(
+    displayLarge: TextStyle(
       fontWeight: FontWeight.bold,
     ),
-    subtitle1: TextStyle(
+    titleMedium: TextStyle(
       color: Colors.grey,
     ),
   ),

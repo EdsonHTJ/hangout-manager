@@ -14,12 +14,12 @@ void main() {
 
 void testDb() async {
   await DataBase.init();
-  var h = Hangout("teste");
+  await DataBase.cleanAll();
+  var h = Hangout(0,"teste");
   h.insertPerson(Person(
       id: 0,
       name: "Aderas",
       imgPath: "",
-      credit: 100,
       payed: 200,
       shouldPay: 300));
 
@@ -27,11 +27,10 @@ void testDb() async {
       id: 1,
       name: "Edson",
       imgPath: "",
-      credit: 100,
       payed: 200,
       shouldPay: 300));
 
-  h.insertItem(Item(name: "Churras", payerId: 0, consumerId: 1));
+  h.insertItem(Item(name: "Churras", payer: 1));
 
   DataBase.insertHangout(h);
   var hang = await DataBase.readRangouts();

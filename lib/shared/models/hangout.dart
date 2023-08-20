@@ -7,13 +7,15 @@ part 'hangout.g.dart';
 @HiveType(typeId: 3)
 class Hangout {
   @HiveField(0)
-  final String name;
+  final int id;
   @HiveField(1)
-  final List<Person> persons = [];
+  final String name;
   @HiveField(2)
+  final List<Person> persons = [];
+  @HiveField(3)
   final List<Item> items = [];
 
-  Hangout(this.name);
+  Hangout(this.id,this.name);
 
   void insertPerson(Person p) {
     persons.add(p);

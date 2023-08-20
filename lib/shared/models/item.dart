@@ -8,9 +8,7 @@ class Item {
   @HiveField(0)
   final String name;
   @HiveField(1)
-  final int payerId;
-  @HiveField(2)
-  final int consumerId;
+  final int payer;
 
-  Item({required this.name, required this.payerId, required this.consumerId});
+  Item({required this.name, required this.payer});
 }

@@ -10,19 +10,16 @@ class Person {
   @HiveField(1)
   final String name;
   @HiveField(2)
-  final int credit;
-  @HiveField(3)
   final int payed;
-  @HiveField(4)
+  @HiveField(3)
   final int shouldPay;
-  @HiveField(5)
+  @HiveField(4)
   final String imgPath;
 
   Person(
       {required this.id,
       required this.name,
       required this.imgPath,
-      required this.credit,
       required this.payed,
       required this.shouldPay});
 }
