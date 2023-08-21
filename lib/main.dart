@@ -15,24 +15,24 @@ void main() {
 void testDb() async {
   await DataBase.init();
   await DataBase.cleanAll();
-  var h = Hangout(0,"teste");
-  h.insertPerson(Person(
-      id: 0,
-      name: "Aderas",
-      imgPath: "",
-      payed: 200,
-      shouldPay: 300));
+  var h = Hangout(0, "teste");
+  h.insertPerson(
+      Person(id: 0, name: "Aderas", imgPath: "", payed: 200, shouldPay: 300));
 
-  h.insertPerson(Person(
-      id: 1,
-      name: "Edson",
-      imgPath: "",
-      payed: 200,
-      shouldPay: 300));
+  h.insertPerson(
+      Person(id: 1, name: "Edson", imgPath: "", payed: 200, shouldPay: 300));
+
+  var h2 = Hangout(1, "teste2");
+  h2.insertPerson(
+      Person(id: 0, name: "Aderas", imgPath: "", payed: 200, shouldPay: 300));
+  var h3 = Hangout(2, "teste3");
 
   h.insertItem(Item(name: "Churras", payer: 1));
-
+  h2.date = DateTime.now().subtract(const Duration(days: 1));
+  h3.date = DateTime.now().subtract(const Duration(days: 2));
   DataBase.insertHangout(h);
+  DataBase.insertHangout(h2);
+  DataBase.insertHangout(h3);
   var hang = await DataBase.readRangouts();
   print(hang);
   print(hang[0].items[0].name);

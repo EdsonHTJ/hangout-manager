@@ -19,13 +19,15 @@ class HangoutAdapter extends TypeAdapter<Hangout> {
     return Hangout(
       fields[0] as int,
       fields[1] as String,
-    );
+    )
+      ..imgPath = fields[4] as String
+      ..date = fields[5] as DateTime?;
   }
 
   @override
   void write(BinaryWriter writer, Hangout obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -33,7 +35,11 @@ class HangoutAdapter extends TypeAdapter<Hangout> {
       ..writeByte(2)
       ..write(obj.persons)
       ..writeByte(3)
-      ..write(obj.items);
+      ..write(obj.items)
+      ..writeByte(4)
+      ..write(obj.imgPath)
+      ..writeByte(5)
+      ..write(obj.date);
   }
 
   @override

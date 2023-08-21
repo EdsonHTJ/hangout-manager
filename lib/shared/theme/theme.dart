@@ -7,7 +7,7 @@ var appTheme = ThemeData(
   brightness: Brightness.dark,
   scaffoldBackgroundColor: AppColors.backgroundColor,
   textTheme: const TextTheme(
-    bodyLarge: TextStyle(fontSize: 18),
+    bodyLarge: TextStyle(fontSize: 24),
     labelLarge: TextStyle(
       fontSize: 20,
     ),
