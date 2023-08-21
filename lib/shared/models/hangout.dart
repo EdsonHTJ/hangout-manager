@@ -7,19 +7,17 @@ part 'hangout.g.dart';
 @HiveType(typeId: 3)
 class Hangout {
   @HiveField(0)
-  final int id;
-  @HiveField(1)
   String name;
-  @HiveField(2)
+  @HiveField(1)
   final List<Person> persons = [];
-  @HiveField(3)
+  @HiveField(2)
   final List<Item> items = [];
-  @HiveField(4)
+  @HiveField(3)
   String imgPath = "";
-  @HiveField(5)
-  DateTime? date;
+  @HiveField(4)
+  DateTime date = DateTime.now();
 
-  Hangout(this.id, this.name) {
+  Hangout(this.name) {
     date = DateTime.now();
   }
 
@@ -37,5 +35,10 @@ class Hangout {
 
   void insertItem(Item i) {
     items.add(i);
+  }
+
+  String getHangoutKey() {
+    //Calculate the hash of the hangout based on name and date
+    return name + date.millisecond.toString();
   }
 }

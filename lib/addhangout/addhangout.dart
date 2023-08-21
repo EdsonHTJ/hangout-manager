@@ -1,4 +1,6 @@
 import 'package:billmanager/components/editabletext.dart';
+import 'package:billmanager/shared/models/hangout.dart';
+import 'package:billmanager/shared/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class AddHangoutScreen extends StatefulWidget {
@@ -12,17 +14,25 @@ class _AddHangoutScreenState extends State<AddHangoutScreen> {
   final TextEditingController _nameController =
       TextEditingController(text: "Novo role");
   bool _isEditable = false;
+  Hangout hangout = Hangout("");
 
   @override
   Widget build(BuildContext context) {
+    hangout = ModalRoute.of(context)!.settings.arguments as Hangout;
+
+    var title = 'Adicionar Role';
+    if (hangout.name != "") {
+      title = 'Editar Role';
+      _nameController.text = hangout.name;
+    }
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Adicionar role', style: TextStyle(fontSize: 30)),
+        title: Text(title, style: const TextStyle(fontSize: 30)),
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(40.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -36,6 +46,8 @@ class _AddHangoutScreenState extends State<AddHangoutScreen> {
                 ),
                 const Spacer(),
                 IconButton(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   onPressed: () {
                     setState(() {
                       _isEditable = !_isEditable;
@@ -49,6 +61,14 @@ class _AddHangoutScreenState extends State<AddHangoutScreen> {
                 ),
               ],
             ),
+            const SizedBox(height: 20),
+            const Placeholder(
+              fallbackHeight: 100,
+              fallbackWidth: 200,
+            ),
+            const SizedBox(height: 20),
+            Text("Participantes:", style: appTheme.textTheme.bodyLarge),
+            const Spacer(),
           ],
         ),
       ),

@@ -17,28 +17,25 @@ class HangoutAdapter extends TypeAdapter<Hangout> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Hangout(
-      fields[0] as int,
-      fields[1] as String,
+      fields[0] as String,
     )
-      ..imgPath = fields[4] as String
-      ..date = fields[5] as DateTime?;
+      ..imgPath = fields[3] as String
+      ..date = fields[4] as DateTime;
   }
 
   @override
   void write(BinaryWriter writer, Hangout obj) {
     writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.name)
-      ..writeByte(2)
-      ..write(obj.persons)
-      ..writeByte(3)
-      ..write(obj.items)
-      ..writeByte(4)
-      ..write(obj.imgPath)
       ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.name)
+      ..writeByte(1)
+      ..write(obj.persons)
+      ..writeByte(2)
+      ..write(obj.items)
+      ..writeByte(3)
+      ..write(obj.imgPath)
+      ..writeByte(4)
       ..write(obj.date);
   }
 

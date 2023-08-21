@@ -18,7 +18,7 @@ class DataBase {
 
   static insertHangout(Hangout h) async {
     var hs = await Hive.openBox<Hangout>(_hangoutBox);
-    await hs.put(h.name, h);
+    await hs.put(h.getHangoutKey(), h);
     await hs.close();
   }
 
@@ -33,6 +33,21 @@ class DataBase {
     }
 
     return hList;
+  }
+
+  static Future<Iterable<Hangout>> readRangoutsIterable() async {
+    var hBox = await Hive.openBox<Hangout>(_hangoutBox);
+    var dList = hBox.values;
+    await hBox.close();
+
+    return dList;
+  }
+
+  static Future<Hangout> readHangout(String name) async {
+    var hBox = await Hive.openBox<Hangout>(_hangoutBox);
+    var hangout = hBox.get(name);
+    await hBox.close();
+    return hangout!;
   }
 
   static deleteHangout(String name) async {

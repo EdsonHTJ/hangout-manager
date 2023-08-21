@@ -15,17 +15,17 @@ void main() {
 void testDb() async {
   await DataBase.init();
   await DataBase.cleanAll();
-  var h = Hangout(0, "teste");
+  var h = Hangout("teste");
   h.insertPerson(
       Person(id: 0, name: "Aderas", imgPath: "", payed: 200, shouldPay: 300));
 
   h.insertPerson(
       Person(id: 1, name: "Edson", imgPath: "", payed: 200, shouldPay: 300));
 
-  var h2 = Hangout(1, "teste2");
+  var h2 = Hangout("teste2");
   h2.insertPerson(
       Person(id: 0, name: "Aderas", imgPath: "", payed: 200, shouldPay: 300));
-  var h3 = Hangout(2, "teste3");
+  var h3 = Hangout("teste3");
 
   h.insertItem(Item(name: "Churras", payer: 1));
   h2.date = DateTime.now().subtract(const Duration(days: 1));

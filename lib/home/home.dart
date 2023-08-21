@@ -14,14 +14,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Hangout> hangouts = [];
+  Iterable<Hangout> hangouts = [];
 
   _HomeScreenState() {
     fetchHangouts();
   }
 
   void fetchHangouts() async {
-    var hangouts = await DataBase.readRangouts();
+    var hangouts = await DataBase.readRangoutsIterable();
     setState(() {
       this.hangouts = hangouts;
     });
@@ -47,7 +47,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ListView(
                 shrinkWrap: true,
                 children: hangouts
-                    .map((hangout) => HangoutItemWidget(hangout: hangout))
+                    .map((hangout) => GestureDetector(
+                          child: HangoutItemWidget(hangout: hangout),
+                          onTap: () => {
+                            Navigator.pushNamed(context, "/addhangout",
+                                arguments: hangout)
+                          },
+                        ))
                     .toList(),
               ),
             ],
@@ -57,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.buttonPrimaryColor,
           onPressed: () {
-            Navigator.pushNamed(context, "/addhangout");
+            Navigator.pushNamed(context, "/addhangout", arguments: Hangout(""));
           },
           child: const Icon(Icons.add),
         ));
